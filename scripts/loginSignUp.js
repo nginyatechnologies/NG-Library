@@ -8,6 +8,7 @@ var LoginObject;
 function userLogin() {
     
     var loginXmlHttpRequest;
+    var signupXmlHttpRequest;
 
     // collect login credentials
     var userNameFieldId = "", passwordFieldId = "";
@@ -33,8 +34,8 @@ function userLogin() {
                     var responseJSon = loginXmlHttpRequest.responseText;
                     var responseObject = JSON.parse(responseJSon);
                     // check user login status
-                    if (responseObject.status == true) {
-                        // redirect the user to profile page
+                    if (responseObject.success) {
+                        // log user in and redirect the user to profile page
                     }
                     else{
                         // alert/notify user
@@ -75,10 +76,11 @@ function userSignUp() {
     var confirmPassword = document.getElementById(ConfirmpasswordFieldId);
 
     // validate input
-
+    {
     // validate email.
     var emailPattern = "/\\w{3, }\\@\\[a-z|A-Z]{3, 45}.\\w+/i";
-    if (email.length > 8) {
+
+    if (email.length >= 8) {
         if (!emailPattern.test(email)) {
             alert("Error: invalid email");
             return;
@@ -88,5 +90,54 @@ function userSignUp() {
         return;
     }
 
+    // validate username
+    if (userName.length >= 3) {
+        
+    }else{
+        alert("Invalid input: User name must be atleast 3(three) characters");
+        return;
+    }
+    // validate phone number
+    if (tel.length >= 7) {
+        
+    }else{
+        alert("Invalid telephone number: Phone number must be atleas 7(seven) characters.");
+        return;
+    }
+    // validate password
+    if (password.length >= 8) {
+        if (confirmPassword.length >= 8) {
+            if (password != confirmPassword) {
+                alert("Error: Passwords do not match. Re-enter the password in the confirmation field.");
+                return;
+            }
+        }else{
+            alert("Invalid input: password must be atleast 8(eight) characters long");
+            return;
+        }
+    }
+    {
+        alert("Invalid input: password must be atleast 8(eight) characters long");
+        return;
+    }}
+    // validation complete
+
+
+    // ACCOUNT CREATION
+    if(window.XMLHttpRequest){
+        signupXmlHttpRequest = new XMLHttpRequest();
+    }else{
+        signupXmlHttpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    signupXmlHttpRequest.onreadystatechange = function(){
+        if (signupXmlHttpRequest.readyState == 4 && signupXmlHttpRequest.state == 200) {
+            var responseObject = JSON.parse(signupXmlHttpRequest.responseText)
+            if (responseObject.success) {
+                // log user in and redirect the user to the profile page
+                windiw.location = "";
+            }
+            else
+        }
+    }
 
 }
