@@ -78,7 +78,7 @@ function userSignUp() {
     // validate input
     {
     // validate email.
-    var emailPattern = "/\\w{3, }\\@\\[a-z|A-Z]{3, 45}.\\w+/i";
+    var emailPattern = "/^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$/";
 
     if (email.length >= 8) {
         if (!emailPattern.test(email)) {
@@ -136,7 +136,9 @@ function userSignUp() {
                 // log user in and redirect the user to the profile page
                 windiw.location = "";
             }
-            else
+            else{
+                alert("Accout creation failed: "+responseObject.messsage);
+            }
         }
     }
 
