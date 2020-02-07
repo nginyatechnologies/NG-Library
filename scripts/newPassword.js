@@ -29,7 +29,7 @@ function sendPassword(){
     xHttp.onreadystatechange = function(){
         if(this.readyState == 4 && this.status == 200){
             console.log(this.responseText);
-            window.location("../views/Login.html");
+            window.location = "../views/Login.html";
         }
     }
 }
