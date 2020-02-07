@@ -6,7 +6,6 @@ let showCodeInput = false;
 let submitEmail = document.getElementById('email-input');
 let emailInput = document.getElementById('wrong-email-input');
 
-
 // function called when email is submitted
 function onSubmit(){
     // validation of password reset form

@@ -39,7 +39,9 @@ function userLogin() {
                     // check user login status                    
                     if (responseObject.success == true) {
                         // log user in and redirect the user to profile page
-                        console.log(responseObject);
+                        localStorage.setItem('loginResponse',JSON.stringify(this.responseText));
+                        console.log(this.responseText);
+                        window.location = "../BookModule/userDashboard.html";
                     }
                     else{
                         // alert/notify user
@@ -169,11 +171,11 @@ function userSignUp() {
                         // localStorage.setItem("phone", responseObject.user.phone);
                         // localStorage.setItem("id", responseObject.user.id);
         
-        
-                        window.location = "";
+                        localStorage.setItem('signupResponse',JSON.stringify(this.responseText));
+                        window.location = "../BookModule/userDashboard.html";
                     }
                     else{
-                        alert("Accout creation failed: "+responseObject.messsage);
+                        alert("Account creation failed: "+responseObject.messsage);
                         return;
                     }
                 }
