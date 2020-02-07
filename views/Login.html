@@ -12,20 +12,20 @@
     <div>
         <form>
             <label for="UserName">User Name:</label>
-            <input type="text" id="UserName" name="UserName" 
+            <input type="text" id="userNameField" name="UserName" 
             placeholder="Enter Name">
 
             <label for="Password">Pass Word:</label>
-            <input type="text" id="PassWord" name="PassWord"
+            <input type="password" id="passwordField" name="PassWord"
             placeholder="Enter PassWord">
 
             <a href="../views/forgotPassword.html">Foregotten Pass Word:</a>
 
-            <input type="submit" value="Submit">
+            <input type="submit" value="Submit" onclick="userLogin()">
             
 
         </form>
     </div>
-    
+    <script src="../scripts/loginSignUp.js"></script>
 </body>
 </html>
