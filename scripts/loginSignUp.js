@@ -82,7 +82,7 @@ function userSignUp() {
     // var userName = userNode.value;
     var password = document.getElementById("passwordField2").value;
     var confirmPassword = document.getElementById("confirmPasswordField").value;
-    // var phone = document.getElementById("phoneField").value;
+    var phone = document.querySelector("#phoneField").value;
 
     console.log(userName);
     console.log(email);
