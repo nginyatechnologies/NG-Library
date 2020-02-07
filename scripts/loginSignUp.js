@@ -34,7 +34,7 @@ function userLogin() {
                         if (this.readyState == 4 && this.status == 200) {
                     var responseJSon = this.responseText;
                     var responseObject = JSON.parse(responseJSon);
-                   
+                            
                    
                     // check user login status                    
                     if (responseObject.success == true) {
@@ -42,6 +42,8 @@ function userLogin() {
                         localStorage.setItem('loginResponse',JSON.stringify(this.responseText));
                         console.log(this.responseText);
                         window.location = "../BookModule/userDashboard.html";
+                        alert("User successfully logged in.");
+                        console.log(responseObject);
                     }
                     else{
                         // alert/notify user
@@ -75,23 +77,19 @@ function userLogin() {
 
 // signup input validating and submission
 function userSignUp() {
-    // input field Ids
-    var emailFieldId = "emailField";
-    var phoneFieldId = "phoneField";
-    var userNameFieldId = "userNameField2";
-    var passwordFieldId = "passwordField2";
-    var ConfirmpasswordFieldId = "confirmPasswordField";
+    
 
-    var email = document.getElementById(emailFieldId).value;
-    var tel = document.getElementById(phoneFieldId).value;
-    var userName = document.querySelector("#"+userNameFieldId).value;
+    var email = document.getElementById("emailField").value;
+    
+    var userName = document.querySelector("#userNameField2").value;
     // var userName = userNode.value;
-    var password = document.getElementById(passwordFieldId).value;
-    var confirmPassword = document.getElementById(ConfirmpasswordFieldId).value;
+    var password = document.getElementById("passwordField2").value;
+    var confirmPassword = document.getElementById("confirmPasswordField").value;
+    var phone = document.querySelector("#phoneField").value;
 
     console.log(userName);
     console.log(email);
-    console.log(tel);
+    console.log(phone);
     
     // validate input
     
@@ -116,7 +114,7 @@ function userSignUp() {
         return;
     }
     // validate phone number
-    if (tel.length >= 7) {
+    if (phone.length >= 7) {
         
     }else{
         alert("Invalid telephone number: Phone number must be atleas 7(seven) characters.");
@@ -190,6 +188,6 @@ function userSignUp() {
     };
     signupXmlHttpRequest.open(RequestMethod, "http://192.168.43.14:7500/nglibrary/api/user/register" , RequestAsynchronous);
     signupXmlHttpRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    signupXmlHttpRequest.send(`email=${email}&phone=${tel}&userName=${userName}&password=${password}`);
+    signupXmlHttpRequest.send(`email=${email}&phone=${phone}&userName=${userName}&password=${password}`);
 
 }
