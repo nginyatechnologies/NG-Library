@@ -1,53 +1,64 @@
 // Variable declaration
 var RequestMethod = "POST";
-var RequestPath = "";
+var RequestPath = "http://192.168.43.14:7500/nglibrary/api/user/login";
 var RequestAsynchronous = true;
-var LoginObject;
+var userInputObject;
+var signupXmlHttpRequest;
 
 // create user login logic
 function userLogin() {
     
     var loginXmlHttpRequest;
-    var signupXmlHttpRequest;
+    
 
     // collect login credentials
-    var userNameFieldId = "", passwordFieldId = "";
-    var userName = document.getElementById(userNameFieldId);
-    var password = document.getElementById(passwordFieldId);
+    var userNameFieldId = "userNameField", passwordFieldId = "passwordField";
+    var userName = document.getElementById(userNameFieldId).value;
+    var password = document.getElementById(passwordFieldId).value;
 
     // verify/check user credentials
+    console.log(userName);
     if (userName.length >= 3) { // check userName
        if (password.length >= 8) { // check password
 
-            LoginObject = {"userName": userName, "password": password};
+            
             
             // create the xmlHttpRequest Object to handle login.
-            if (window.xHttpRequest) {
-                loginXmlHttpRequest = new XMLHttpRequest(); 
-            }else{
-                loginXmlHttpRequest = new ActiveXObject("Microsoft.XMLHTTP"); // for IE% and IE6 that do not support xmlHttpRequest.
-            }
+            
+                loginXmlHttpRequest = new XMLHttpRequest();
             
             // response handling
             loginXmlHttpRequest.onreadystatechange = function(){
-                if (loginXmlHttpRequest.readyState == 4 && loginXmlHttpRequest.state == 200) {
-                    var responseJSon = loginXmlHttpRequest.responseText;
+                switch (this.status) {
+                    case 200:
+                        if (this.readyState == 4 && this.status == 200) {
+                    var responseJSon = this.responseText;
                     var responseObject = JSON.parse(responseJSon);
-                    // check user login status
-                    if (responseObject.success) {
+                   
+                   
+                    // check user login status                    
+                    if (responseObject.success == true) {
                         // log user in and redirect the user to profile page
+                        console.log(responseObject);
                     }
                     else{
                         // alert/notify user
                         alert("Failure Loging in. "+responseObject.message);
+                        return;
                     }
                 }
+                        break;
+                    case 400:
+                        alert(JSON.parse(this.responseText).message);
+                        break;
+                }
+                
             };
 
             // specify the request details and send the request.
             loginXmlHttpRequest.open(RequestMethod, RequestPath, RequestAsynchronous);
             loginXmlHttpRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            loginXmlHttpRequest.send(JSON.stringify(LoginObject));
+            loginXmlHttpRequest.send(`userName=${userName}&password=${password}`);
         }
         else{
             alert("Password too short. Password must be minimum 8(eight) characters");
@@ -63,22 +74,27 @@ function userLogin() {
 // signup input validating and submission
 function userSignUp() {
     // input field Ids
-    var emailFieldId = "";
-    var phoneFieldId = "";
-    var userNameFieldId = "";
-    var passwordFieldId = "";
-    var ConfirmpasswordFieldId = "";
+    var emailFieldId = "emailField";
+    var phoneFieldId = "phoneField";
+    var userNameFieldId = "userNameField2";
+    var passwordFieldId = "passwordField2";
+    var ConfirmpasswordFieldId = "confirmPasswordField";
 
-    var userName = document.getElementById(userNameFieldId);
-    var email = document.getElementById(emailFieldId);
-    var tel = document.getElementById(phoneFieldId);
-    var password = document.getElementById(passwordFieldId);
-    var confirmPassword = document.getElementById(ConfirmpasswordFieldId);
+    var email = document.getElementById(emailFieldId).value;
+    var tel = document.getElementById(phoneFieldId).value;
+    var userName = document.querySelector("#"+userNameFieldId).value;
+    // var userName = userNode.value;
+    var password = document.getElementById(passwordFieldId).value;
+    var confirmPassword = document.getElementById(ConfirmpasswordFieldId).value;
 
+    console.log(userName);
+    console.log(email);
+    console.log(tel);
+    
     // validate input
-    {
+    
     // validate email.
-    var emailPattern = "/^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$/";
+    var emailPattern =  new RegExp("\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})");
 
     if (email.length >= 8) {
         if (!emailPattern.test(email)) {
@@ -116,11 +132,15 @@ function userSignUp() {
             return;
         }
     }
-    {
+    else{
         alert("Invalid input: password must be atleast 8(eight) characters long");
         return;
-    }}
+    }
+    
+    
     // validation complete
+
+    // set user inputs object
 
 
     // ACCOUNT CREATION
@@ -129,17 +149,45 @@ function userSignUp() {
     }else{
         signupXmlHttpRequest = new ActiveXObject("Microsoft.XMLHTTP");
     }
+    
     signupXmlHttpRequest.onreadystatechange = function(){
-        if (signupXmlHttpRequest.readyState == 4 && signupXmlHttpRequest.state == 200) {
-            var responseObject = JSON.parse(signupXmlHttpRequest.responseText)
-            if (responseObject.success) {
-                // log user in and redirect the user to the profile page
-                windiw.location = "";
-            }
-            else{
-                alert("Accout creation failed: "+responseObject.messsage);
-            }
+        console.log(this.responseText);
+        switch (this.status) {
+            case 200:
+                if (this.readyState == 4) {
+                    var responseObject = JSON.parse(this.responseText);
+                    console.log(this.responseText);
+                    console.log(responseObject);
+                    
+                    if (responseObject.success == true) {
+                        // LOG USER IN AND REDIRECT USER TO PROFILE PAGE
+                       
+                        
+                        // save user details
+                        // localStorage.setItem("userName", responseObject.user.userName);
+                        // localStorage.setItem("email", responseObject.user.email);
+                        // localStorage.setItem("phone", responseObject.user.phone);
+                        // localStorage.setItem("id", responseObject.user.id);
+        
+        
+                        window.location = "";
+                    }
+                    else{
+                        alert("Accout creation failed: "+responseObject.messsage);
+                        return;
+                    }
+                }
+                break;
+
+            case 400:
+                alert(JSON.parse(this.responseText).message);
+                break;
+
         }
-    }
+  
+    };
+    signupXmlHttpRequest.open(RequestMethod, "http://192.168.43.14:7500/nglibrary/api/user/register" , RequestAsynchronous);
+    signupXmlHttpRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    signupXmlHttpRequest.send(`email=${email}&phone=${tel}&userName=${userName}&password=${password}`);
 
 }
