@@ -36,6 +36,7 @@ function sendEmail(inputEmail){
     let baseUrl = "http://192.168.43.14:7500/nglibrary/api/user/recovery";
     xHttp.open("POST",baseUrl,true);
     xHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    localStorage.setItem("validEmail",inputEmail);
     xHttp.send(`email=${inputEmail}`);
     xHttp.onreadystatechange = function(){
         if(this.readyState == 4 && this.status == 200){
@@ -51,17 +52,18 @@ function sendEmail(inputEmail){
     }
 }
 
-// 
+// sends verification code to server
 function onCodeSubmit(){
-    let codeUrl 
+    let codeUrl = "http://192.168.43.14:7500/nglibrary/api/user/account%verification";
     xHttp.open("POST",codeUrl,true);
     xHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    let verifiedCode = document.getElementById('email');
-    let verifiedCodeValue = verifiedCode.value;
-    xHttp.send(`verifiedCode=${verifiedCodeValue}`);
+    let verifyCode = document.getElementById('email-input');
+    xHttp.send(`verifyCode=${verifyCode.value}`);
     xHttp.onreadystatechange = function(){
+        console.log(this.responseText);
         if(this.readyState == 4 && this.status == 200){
             window.location = "../views/newPassword.html";
+            console.log(this.responseText);
         }
     }
 }
