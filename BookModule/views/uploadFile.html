@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../../CityMaster/jquery/jquery-3.3.1.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <form action="http://192.168.1.2:7500/nglibrary/api/book/upload" method="post" enctype="multipart/form-data">
+        <label for="bookTitle">Book title</label><br>
+        <input type="text" name="" id="bookTitleField" required><br>
+
+        <label for="bookCategory">Book category</label><br>
+        <select name="" id="bookCategoryField" required></select><br>
+
+        <label for="bookAuthor">Book author</label><br>
+        <input type="text" name="" id="bookAuthorField" required><br>
+
+        <label for="file">Select file</label><br>
+        <input type="file" name="book" id="fileField" required><br>
+       
+
+        <button type="button" onclick="addBook()">Done</button>
+        <a href="../../views/Login.html" download="Login.html">dsjfshgd</a>
+    </form>
+
+    <script src="../scripts/addBook.js"></script>
+</body>
+</html>
