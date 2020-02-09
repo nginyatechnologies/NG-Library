@@ -27,13 +27,13 @@ bookInfoRequest.send();
 // book has title, category, author, bookfile
 function addBook() {
 
-
      var bookTitle = document.querySelector("#"+bookTitleFieldId).value;
      var bookCategory = document.querySelector("#"+bookCategoryFieldId).value;
      var bookAuthor = document.querySelector("#"+bookAuthorFieldId).value;
      var bookFileNode = document.querySelector("#"+bookFilePathId);
+    //  localStorage.setItem("image", document.querySelector("#imageField").files[0]);
+    //  document.querySelector("#imageView").src = localStorage.getItem("image");
          
-
     // validate input
     if(bookTitle.length < 3){
         alert("Invalid book title. Book title must be atleast three(3) characters");
@@ -50,7 +50,6 @@ function addBook() {
     // check if book file is selected
     if (bookFileNode.files) {
         
-        
         // check if exactly one book is selected
         if(bookFileNode.files.length == 1){
             // check for book type
@@ -61,8 +60,7 @@ function addBook() {
             if (bookTypes.indexOf(fileExtension) <= -1) {
                 alert("Invalid input. Unsupported file type");
                 return;
-            }
-           
+            }           
         }
         else{
             alert("Error: Only one book can be uploaded at a time");
@@ -72,9 +70,6 @@ function addBook() {
         alert("Error: Must supply a book");
         return;
     }
-
-    // document.forms[0].submit();
-
 
     //  create a request object
     var formData = new FormData();
@@ -98,15 +93,12 @@ function addBook() {
                         alert("Book successfully added to library");
                     }
                 }
-
-                break;
-        
+                break;      
             default:
                 break;
         }
-
     };
-    saveBookObject.open("POST", "http://192.168.1.2:7500/nglibrary/api/book/upload", true);
+    saveBookObject.open("POST", "http://192.168.1.2:7500/nglibrary/api/book/db/upload", true);
     // saveBookObject.setRequestHeader("Content-type", "multipart/form-data");
     saveBookObject.send(formData);
     // saveBookObject.send(`bookTitle=${bookTitle}& bookCategory=${bookCategory}& bookAuthor=${bookAuthor} &file=${bookFileNode.files[0]}`);

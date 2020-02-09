@@ -19,12 +19,27 @@
 
         <label for="file">Select file</label><br>
         <input type="file" name="book" id="fileField" required><br>
-       
+
+        <!-- <label for="image">Select image</label><br>
+        <input type="file" name="" id="imageField"><br>
+        
+        <img src="../../../CityMaster/images/01 - January 2019 (myphotopack.com).png" alt="" id="imageView" width="100" height="100"> -->
 
         <button type="button" onclick="addBook()">Done</button>
-        <a href="../../views/Login.html" download="Login.html">dsjfshgd</a>
+
     </form>
 
+    <label for="bookId">Book Id</label><br>
+    <input type="text" name="" id="bookId"><br>
+
+    <button onclick="deleteBook()">Delete</button><br>
+
+    <input type="text" id="bookDownload" placeholder="enter file name"><br>
+    <button onclick="downloadBook()">Download</button><br>
+    
+
     <script src="../scripts/addBook.js"></script>
+    <script src="../scripts/deleteBook.js"></script>
+    <script src="../scripts/downloadBook.js"></script>
 </body>
 </html>
