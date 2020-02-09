@@ -7,11 +7,28 @@
     <title></title>
     <link rel="stylesheet" href="./styles/userDashboard.css">
     <link rel="stylesheet" href="../assets/bootstrap4/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/fontaweswome5/all.min.js">
+    <script src="../assets/fontaweswome5/all.min.js"></script>
 </head>
 <body id="user-dashboard-body">
    <div class="container-fluid">
-       <h5>hi<span id="userName"></span></h5>
+       <h5><i class="fas fa-user-circle"></i>&nbsp;<span id="userName" class="text-capitalize"></span></h5>
+       <div class="row">
+           <div class="col-sm-12 text-center search-input">
+               <input type="text" placeholder="find book" id="search-input">
+               <button type="button" class="bg-primary">submit</button>
+       </div>
+       <hr>
+       <!-- displays popular books -->
+       <div class="row">
+            <div class="col-sm-4 text-danger"></div>
+            <div class="col-sm-4 text-danger">
+                <div class="row" id="pop-books-div">
+                </div>
+            </div>
+            <div class="col-sm-4 text-danger" id="book-details"></div>
+       </div>
+       <div class="row">
+       </div>
    </div>
 <script src="./scripts/userDashboard.js"></script>
 </body>
