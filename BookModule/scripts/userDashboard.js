@@ -38,7 +38,7 @@ function getPopularBooks(){
 
                 //add valid classes
                 BookImg.classList.add("card-img-top");
-                book.classList.add('col-sm-3');
+                book.classList.add('col-sm-4');
                 cardContent.classList.add('card');
                 // BookImg.src = response.
                 divCardBody.classList.add("card-body");
