@@ -28,7 +28,8 @@ function sendPassword(){
     xHttp.send(`newPassword=${newPwd.value}&email=${email}`);
     xHttp.onreadystatechange = function(){
         if(this.readyState == 4 && this.status == 200){
-            console.log(this.responseText);
+            // console.log(this.responseText);
+            localStorage.setItem("newPassword",JSON.stringify(this.responseText));
             window.location = "../views/Login.html";
         }
     }
