@@ -39,7 +39,7 @@ function userLogin() {
                     // check user login status                    
                     if (responseObject.success == true) {
                         // log user in and redirect the user to profile page
-                        localStorage.setItem('loginResponse',JSON.stringify(this.responseText));
+                        localStorage.setItem('loginResponse',this.responseText);
                         console.log(this.responseText);
                         window.location = "../BookModule/userDashboard.html";
                         alert("User successfully logged in.");
