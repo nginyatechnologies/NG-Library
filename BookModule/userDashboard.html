@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,26 +10,35 @@
     <link rel="stylesheet" href="../assets/bootstrap4/css/bootstrap.min.css">
     <script src="../assets/fontaweswome5/all.min.js"></script>
 </head>
+
 <body id="user-dashboard-body">
-   <div class="container-fluid">
-       <h5><i class="fas fa-user-circle"></i>&nbsp;<span id="userName" class="text-capitalize"></span></h5>
-       <div class="row">
-            <div class="col-sm-12 text-center search-input">
-               <input type="text" placeholder="find book" id="search-input">
-               <button type="button" class="bg-primary">submit</button>
+    <div class="container-fluid">
+        <h5><i class="fas fa-user-circle"></i>&nbsp;<span id="userName" class="text-capitalize"></span></h5>
+        <div class="row">
+            <div class="col-sm-10 text-center search-input">
+                <input type="text" placeholder="find book" id="search-input">
+                <button type="button" class="bg-primary">submit</button>
+            </div>
+            <div class="col-sm-2">
+                <button type="button" (click) = logout()>logout</button>
             </div>
             <hr>
-       </div>
-       <!-- displays popular books -->
-       <div class="row">
-            <div class="col-sm-4 text-danger"></div>
-            <div class="col-sm-4 text-danger">
-                <div class="row" id="pop-books-div"></div>
+        </div>
+        <!-- displays popular books -->
+        <div class="row">
+            <div class="col-sm-4 col-md-3 text-danger"></div>
+
+            <div class="col-sm-4 col-md-6 text-danger">
+                <div id="pop-books-div" class="allBooks">
+                    <!-- all books are displayed here -->
+                </div>
             </div>
-            <div class="col-sm-4 text-danger" id="book-details"></div>
-       </div>
-       <div class="row"></div>
-   </div>
-<script src="./scripts/userDashboard.js"></script>
+
+            <div class="col-sm-4 col-md-3 text-danger" id="book-details"></div>
+
+        </div>
+    </div>
+    <script src="./scripts/userDashboard.js"></script>
 </body>
+
 </html>
