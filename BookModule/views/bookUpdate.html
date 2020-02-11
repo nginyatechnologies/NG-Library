@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/font-awesome/css/font-awesome.min.css">
+    <script src="../../assets/jquery-3.4.1.min.js"></script>
+    <script src="../../assets/bootstrap/js/bootstrap.min.js"></script>
+    <title>Document</title>
+    <style>
+ 
+        #detailsViewFrame{
+            border-radius: 1rem;
+            border: 1rem groove rgb(252, 196, 150);
+            background: repeating-linear-gradient(rgb(228, 199, 171), rgb(102, 85, 78));
+            padding-top: 4rem;
+            margin: 16vh auto;
+        }
+        #bookActions{
+            font-size: x-large;
+            color: brown;
+        }
+        #bookActions button{
+            background-color: rgb(255, 255, 255);
+        }
+        #thumbnailFrame > div{
+            max-width: 100%;
+            min-width: 7rem;
+        }
+        .editable{
+            background-color: rgb(235, 229, 224);
+            border-width: 0 1px 1px 0px;
+            border-color: white;
+            padding-left: 20%;
+        }
+        .fileView{
+            margin: 1.7rem auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class="form-group">
+        <label for="bookId">Book ID</label>
+        <input type="text" name="" id="bookId" class="form-control input">
+        <button id="idGetterButton">Get Book</button>
+    </div> -->
+
+    <div class="col-xs-1 col-sm-2"></div>
+    <div id="detailsViewFrame" class="col-sm-8 col-xs-10 text-center">
+        <div id="detailsFrame" class="col-xs-10 col-sm-7">
+            <div class="container-fluid px-auto">
+                <div class="form-group">
+                    <label for="titleView" class="h4"><b>Title</b></label><br>
+                    <input type="text" class="input-lg h4 editable form-control" name="" id="titleView" placeholder="Book title"><br>
+                </div>
+                <div class="form-group">
+                    <label for="authorView" class="h4"><b>Author</b></label><br>
+                    <input type="text" class="input-lg h4 editable form-control" name="" id="authorView" placeholder="Book title"><br>
+                </div>
+                <div class="form-group">
+                    <label for="categoryView" class="h4"><b>Category</b></label><br>
+                    <select type="text" class="input-lg h4 editable form-control" name="" id="categoryView" placeholder="Book title">
+                        <option value="none">none</option>
+                    </select><br>
+                </div>
+            </div>
+        </div>
+        <div id="thumbnailFrame" class="col-xs-10 col-sm-5 text-center">
+            <div class="embed-responsive embed-responsive-4by3 container-fluid text-center">
+                <img src="../../../CityMaster/images/03 - January 2019 (myphotopack.com).png" alt="" class="editable img-thumbnail img-responsive embed-responsive-item" data-toggle="tooltip" title="Open book" id="thumbnailView">
+            </div>
+
+            <div class="container-fluid text-center fileView">
+                <a href="#fileViewGroup" data-toggle="collapse" class="btn editable input-lg btn-lg">Change book</a><br>
+                <div class="form-group  collapse" id="fileViewGroup">
+                    <input type="file" name="" id="fileView" class="input-lg h4 editable form-control"><br>
+                </div>
+            </div>
+
+        </div>
+       
+        <div id="bookActions" class="col-xs-10 col-xs-offset-1">
+
+            <button class="btn btn-lg" id="cancelButton" data-toggle="tooltip" title="cancel">
+                <span class="fa fa-trash-o" >Cancel</span>
+            </button>
+            <button class="btn btn-lg navbar-right" id="saveButton" data-toggle="tooltip" title="save">
+                <span class="fa fa-share-square-o">Save</span>
+            </button>
+
+        </div>
+    </div>
+    <div class="col-xs-1 col-sm-2"></div>
+
+    <script src="../scripts/updateBook.js"></script>
+</body>
+</html>

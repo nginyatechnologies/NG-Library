@@ -1,7 +1,7 @@
 // delete book with ID.
 // get the file details
-function deleteBook() {
-var bookId = document.querySelector("#bookId").value;
+function deleteBook(bookId) {
+
 // localStorage.getItem("bookId");
 // book deletion request
 var deleteRequest = new XMLHttpRequest();

@@ -1,6 +1,6 @@
 // Variable declaration
 var RequestMethod = "POST";
-var RequestPath = "http://192.168.43.14:7500/nglibrary/api/user/login";
+var RequestPath = "http://192.168.1.3:7500/nglibrary/api/user/login";
 var RequestAsynchronous = true;
 var userInputObject;
 var signupXmlHttpRequest;
@@ -26,9 +26,12 @@ function userLogin() {
             // create the xmlHttpRequest Object to handle login.
             
                 loginXmlHttpRequest = new XMLHttpRequest();
-            
+                console.log(localStorage.getItem("apiKey"));
+                
             // response handling
             loginXmlHttpRequest.onreadystatechange = function(){
+                console.log(this.responseText);
+                
                 switch (this.status) {
                     case 200:
                         if (this.readyState == 4 && this.status == 200) {
@@ -39,9 +42,9 @@ function userLogin() {
                     // check user login status                    
                     if (responseObject.success == true) {
                         // log user in and redirect the user to profile page
-                        localStorage.setItem('loginResponse',this.responseText);
+                        localStorage.setItem('apiKey',(JSON.stringify(this.responseText)).user.apiKey);
                         console.log(this.responseText);
-                        window.location = "../BookModule/userDashboard.html";
+                        // window.location = "../BookModule/userDashboard.html";
                         alert("User successfully logged in.");
                         console.log(responseObject);
                     }
@@ -62,6 +65,7 @@ function userLogin() {
             // specify the request details and send the request.
             loginXmlHttpRequest.open(RequestMethod, RequestPath, RequestAsynchronous);
             loginXmlHttpRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            loginXmlHttpRequest.setRequestHeader("apiKey", localStorage.getItem("apiKey")+"htn");
             loginXmlHttpRequest.send(`userName=${userName}&password=${password}`);
         }
         else{
@@ -169,8 +173,8 @@ function userSignUp() {
                         // localStorage.setItem("phone", responseObject.user.phone);
                         // localStorage.setItem("id", responseObject.user.id);
         
-                        localStorage.setItem('signupResponse',JSON.stringify(this.responseText));
-                        window.location = "../BookModule/userDashboard.html";
+                        localStorage.setItem("apiKey", responseObject.User.apiKey);
+                        // window.location = "../BookModule/userDashboard.html";
                     }
                     else{
                         alert("Account creation failed: "+responseObject.messsage);
@@ -186,7 +190,7 @@ function userSignUp() {
         }
   
     };
-    signupXmlHttpRequest.open(RequestMethod, "http://192.168.43.14:7500/nglibrary/api/user/register" , RequestAsynchronous);
+    signupXmlHttpRequest.open(RequestMethod, "http://192.168.1.3:7500/nglibrary/api/user/register" , RequestAsynchronous);
     signupXmlHttpRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     signupXmlHttpRequest.send(`email=${email}&phone=${phone}&userName=${userName}&password=${password}`);
 
