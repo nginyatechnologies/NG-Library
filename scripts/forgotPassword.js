@@ -32,7 +32,7 @@ function validateEmail(elementValue){
 
 // sends email and receive response from server
 function sendEmail(inputEmail){
-    let baseUrl = "http://192.168.43.14:7500/nglibrary/api/user/recovery";
+    let baseUrl = "http://192.168.1.3:7500/nglibrary/api/user/recovery";
     xHttp.open("POST",baseUrl,true);
     xHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     localStorage.setItem("validEmail",inputEmail);
@@ -46,6 +46,7 @@ function sendEmail(inputEmail){
             submitButton1.style.display = 'none';
             let submitButton2 = document.getElementById('code-submit-button');
             submitButton2.innerHTML = "send";
+            submitButton2.classList.add('code-submit-button');
             console.log(this.responseText);
         }
     }
@@ -53,7 +54,11 @@ function sendEmail(inputEmail){
 
 // sends verification code to server
 function onCodeSubmit(){
-    let codeUrl = "http://192.168.43.14:7500/nglibrary/api/user/account%verification";
+    if(submitEmail.value == ""){
+        emailInput.innerHTML = "field can not be left empty";
+    }
+
+    let codeUrl = "http://192.168.1.3:7500/nglibrary/api/user/account%verification";
     xHttp.open("POST",codeUrl,true);
     xHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     let verifyCode = document.getElementById('email-input');

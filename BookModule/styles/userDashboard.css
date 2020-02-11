@@ -3,8 +3,8 @@
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
-    width: 75vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
 }
 
 #userName{
@@ -23,21 +23,21 @@
 
 #pop-books-div{
     background-color: lightskyblue;
-    width: 50vw;
-    height: 80vh;
+    /* width: 50vw; */
+    /* height: 50vh; */
     padding-top: 0.5rem;
 }
 
 .card{
     margin: 0.1px;
-    padding: 1rem;
-    width: 80%;
+    padding: 2rem;
+    /* width: 80%; */
 }
 
 .card-title{
     color: black;
     font-size: 10px;
-    margin-bottom: 1rem;
+    /* margin-bottom: 0.5rem; */
 }
 
 .card :hover{
@@ -46,6 +46,15 @@
 
 .book-details{
     background-color: black;
-    width: 20rem;
+    /* width: 20rem; */
     padding: 2rem;
+    /* margin-left: 20rem; */
+
 }
+
+.allBooks{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* page styles onclick of book */

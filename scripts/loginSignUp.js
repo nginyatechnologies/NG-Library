@@ -1,6 +1,6 @@
 // Variable declaration
 var RequestMethod = "POST";
-var RequestPath = "http://192.168.43.14:7500/nglibrary/api/user/login";
+var RequestPath = "http://192.168.1.3:7500/nglibrary/api/user/login";
 var RequestAsynchronous = true;
 var userInputObject;
 var signupXmlHttpRequest;
@@ -186,7 +186,7 @@ function userSignUp() {
         }
   
     };
-    signupXmlHttpRequest.open(RequestMethod, "http://192.168.43.14:7500/nglibrary/api/user/register" , RequestAsynchronous);
+    signupXmlHttpRequest.open(RequestMethod, "http://192.168.1.3:7500/nglibrary/api/user/register" , RequestAsynchronous);
     signupXmlHttpRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     signupXmlHttpRequest.send(`email=${email}&phone=${phone}&userName=${userName}&password=${password}`);
 
