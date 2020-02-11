@@ -1,4 +1,4 @@
-function downloadBook(){var bookName = document.getElementById("bookDownload").value;
+function downloadBook(bookName){
 // book download request
 var downloadRequest = new XMLHttpRequest();
 downloadRequest.onreadystatechange = function(){

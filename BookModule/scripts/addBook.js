@@ -5,7 +5,8 @@ var bookTitleFieldId = "bookTitleField", bookCategoryFieldId = "bookCategoryFiel
     bookAuthorFieldId = "bookAuthorField", bookFilePathId = "fileField";
 
 // Query book categories and book file-types
-var bookTypes, bookCategories;
+var bookTypes, bookCategories; 
+// book types and categories will be updated immediately the user logs in
 let bookInfoRequest = new XMLHttpRequest();
 bookInfoRequest.onreadystatechange = function(){
     // console.log(JSON.parse(this.responseText));

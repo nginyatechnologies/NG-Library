@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
+    <script src="../../assets/jquery-3.4.1.min.js"></script>
+    <script src="../../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../scripts/deleteBook.js"></script>
+    <script src="../scripts/downloadBook.js"></script>
+    <script src="../scripts/resource.js"></script>
+    <title>Document</title>
+    <style>
+ 
+        #detailsViewFrame{
+            border-radius: 1rem;
+            border: 1rem groove rgb(250, 138, 47);
+            background: repeating-linear-gradient(rgb(245, 203, 165), rgb(252, 146, 105));
+            padding-top: 4rem;
+            margin: 16vh auto;
+        }
+        #bookActions{
+            font-size: x-large;
+            color: brown;
+        }
+        button{
+            background-color: rgb(252, 173, 144);
+        }
+        #backButton{
+            background-color: rgb(230, 238, 109);
+        }
+        #thumbnailFrame > div{
+            max-width: 80%;
+            min-width: 7rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="col-xs-1 col-sm-2"></div>
+    <div id="detailsViewFrame" class="col-sm-8 col-xs-10 text-center">
+        <div id="thumbnailFrame" class="col-xs-10 col-sm-6 text-center">
+            <div class="embed-responsive embed-responsive-4by3 container-fluid text-center">
+                <img src="../images/Image17.png" alt="" class="img-thumbnail img-responsive embed-responsive-item" data-toggle="tooltip" title="Open book">
+            </div>
+        </div>
+        <div id="detailsFrame" class="col-xs-10 col-sm-5">
+            <div class="container-fluid px-auto">
+                <div class="form-group">
+                    <label for="titleView" class="h5">Title</label>
+                    <div class="input h4" id="titleView">Book title</div>
+                    <hr>
+                </div>
+                <div class="form-group">
+                    <label for="authorView" class="h5">Author</label>
+                    <div class="input h4" id="authorView">Book Author</div>
+                    <hr>
+                </div>
+                <div class="form-group">
+                    <label for="categoryView" class="h5">Category</label>
+                    <div class="input h4" id="categoryView">Book category</div>
+                    <hr>
+                </div>
+            </div>
+        </div>
+        <div id="bookActions" class="col-xs-10 col-xs-offset-1">
+            <button class="btn btn-lg col-xs-2" id="backButton">
+                <span class="fa fa-backward " data-toggle="tooltip" title="go back"></span>
+            </button>
+            <div class="nav navbar-right">
+                <button class="btn btn-lg" id="editButton">
+                    <span class="fa fa-edit " data-toggle="tooltip" title="Edit"></span>
+                </button>
+                <button class="btn btn-lg" id="openButton">
+                    <span class="glyphicon glyphicon-open-file" data-toggle="tooltip" title="Open"></span>
+                </button>
+                <button class="btn btn-lg" id="deleteButton">
+                    <span class="fa fa-trash-o" data-toggle="tooltip" title="Delete"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-1 col-sm-2"></div>
+
+    <script src="../scripts/bookDetails.js"></script>
+</body>
+</html>
